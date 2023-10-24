@@ -41,5 +41,21 @@ export const levels: Level[] = [
     ],
     correctOrder: ["<div>", "<p>Paragraph</p>", "</div>"],
   },
+
+  {
+    cards: [
+      { id: 1, text: "<div>" },
+      { id: 2, text: "</div>" },
+      { id: 3, text: "<p>Welcome to html</p>" },
+      { id: 4, text: "<h1>Hello World</h1>" },
+    ],
+    correctOrder: [
+      "<div>",
+      "<h1>Hello World</h1>",
+      "<p>Welcome to html</p>",
+      "</div>",
+    ],
+  },
+
   // Add more levels as needed
 ];
