@@ -1,11 +1,17 @@
 import React, { FC, useCallback, useState } from "react";
 import update from "immutability-helper";
-import Card from "./Card";
+import { Card } from "./Card";
 import { levels } from "./levels";
-import Modal from "react-modal"; // Import the Modal component
+import Modal from "react-modal";
 
-const style = {
-  width: 400,
+const style: React.CSSProperties = {
+  width: "100%",
+  height: "60vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "lightgray",
+  flexDirection: "column" as "column",
 };
 
 export interface Item {
@@ -84,6 +90,7 @@ export const Container: FC = () => {
       {isOrderCorrect ? <p>The order is incorrect.</p> : null}
 
       {/* Modal for advancing to the next level */}
+
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
@@ -106,3 +113,5 @@ export const Container: FC = () => {
     </>
   );
 };
+
+export default Container;

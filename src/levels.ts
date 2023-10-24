@@ -35,11 +35,23 @@ export const levels: Level[] = [
   },
   {
     cards: [
-      { id: 1, text: "<div>" },
-      { id: 2, text: "<p>Paragraph</p>" },
-      { id: 3, text: "</div>" },
+      { id: 1, text: "<form>" },
+      { id: 2, text: "</form>" },
+      { id: 3, text: "<label>Username</label>" },
+      { id: 4, text: "<label>Password</label>" },
+      { id: 5, text: "<input type='text' name='username'>" },
+      { id: 6, text: "<input type='password' name='password'>" },
+      { id: 7, text: "<button type='submit'>Login</button>" },
     ],
-    correctOrder: ["<div>", "<p>Paragraph</p>", "</div>"],
+    correctOrder: [
+      "<form>",
+      "<label>Username</label>",
+      "<input type='text' name='username'>",
+      "<label>Password</label>",
+      "<input type='password' name='password'>",
+      "<button type='submit'>Login</button>",
+      "</form>",
+    ],
   },
 
   {
@@ -57,5 +69,5 @@ export const levels: Level[] = [
     ],
   },
 
-  // Add more levels as needed
+  // ToDO: Add more levels
 ];
