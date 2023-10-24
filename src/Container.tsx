@@ -27,7 +27,7 @@ export interface Level {
 export const Container: FC = () => {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [cards, setCards] = useState(levels[currentLevel].cards);
-  const [isOrderCorrect, setIsOrderCorrect] = useState(false);
+  const [isOrderIncorrect, setIsOrderIncorrect] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const moveCard = useCallback(
@@ -72,10 +72,10 @@ export const Container: FC = () => {
       if (currentLevel < levels.length - 1) {
         setCurrentLevel(currentLevel + 1);
         setCards(levels[currentLevel + 1].cards);
-        setIsOrderCorrect(false); // Reset the order correctness for the new level
+        setIsOrderIncorrect(false);
       }
     } else {
-      setIsOrderCorrect(true); // Set to true only when the order is incorrect
+      setIsOrderIncorrect(true);
     }
   };
 
@@ -87,7 +87,7 @@ export const Container: FC = () => {
     <>
       <div style={style}>{cards.map((card, i) => renderCard(card, i))}</div>
       <button onClick={checkOrder}>Check Order</button>
-      {isOrderCorrect ? <p>The order is incorrect.</p> : null}
+      {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
 
       {/* Modal for advancing to the next level */}
 
@@ -107,7 +107,9 @@ export const Container: FC = () => {
         }}
       >
         <h2>Success!</h2>
-        <p>The order is correct! Click below to advance to the next level.</p>
+        <p>
+          The order is correct! Click below to advance to the next level. +10hp
+        </p>
         <button onClick={closeModal}>Close</button>
       </Modal>
     </>
