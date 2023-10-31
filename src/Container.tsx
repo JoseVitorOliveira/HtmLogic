@@ -10,7 +10,6 @@ const style: React.CSSProperties = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "lightgray",
   flexDirection: "column" as "column",
 };
 

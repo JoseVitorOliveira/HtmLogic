@@ -6,7 +6,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
 
 const style = {
-  border: "1px dashed green",
+  border: "1px dashed black",
   padding: "0.5rem 1rem",
   marginBottom: ".5rem",
   backgroundColor: "white",
