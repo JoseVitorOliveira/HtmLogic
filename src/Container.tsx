@@ -1,14 +1,14 @@
 import React, { FC, useCallback, useState } from "react";
 import update from "immutability-helper";
 import { Card } from "./Card";
-import { levels } from "./levels";
+import { Level, levels } from "./levels";
 import Modal from "react-modal";
 
 const style: React.CSSProperties = {
   width: "100%",
   height: "60vh",
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
   alignItems: "center",
   flexDirection: "column" as "column",
 };
@@ -16,11 +16,6 @@ const style: React.CSSProperties = {
 export interface Item {
   id: number;
   text: string;
-}
-
-export interface Level {
-  cards: Item[];
-  correctOrder: string[];
 }
 
 export const Container: FC = () => {
@@ -82,11 +77,20 @@ export const Container: FC = () => {
     setIsModalOpen(false);
   };
 
+  // Access the level, title, and imagePath from the current level
+  const currentLevelData: Level = levels[currentLevel];
+  const { level, title, imagePath } = currentLevelData;
+
   return (
     <>
-      <div style={style}>{cards.map((card, i) => renderCard(card, i))}</div>
-      <button onClick={checkOrder}>Check Order</button>
-      {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
+      <div style={style}>
+        <h1>{level}</h1>
+        <h2>{title}</h2>
+        {cards.map((card, i) => renderCard(card, i))}
+        <button onClick={checkOrder}>Check Order</button>
+        {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
+        <img src={process.env.PUBLIC_URL + imagePath} alt={`Level ${level}`} />
+      </div>
 
       {/* Modal for advancing to the next level */}
 
