@@ -3,14 +3,14 @@ import update from "immutability-helper";
 import { Card } from "./Card";
 import { Level, levels } from "./levels";
 import Modal from "react-modal";
+import { Button } from "@radix-ui/themes";
 
 const style: React.CSSProperties = {
   width: "100%",
-  height: "60vh",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  flexDirection: "column" as "column",
+  flexDirection: "row",
 };
 
 export interface Item {
@@ -23,6 +23,8 @@ export const Container: FC = () => {
   const [cards, setCards] = useState(levels[currentLevel].cards);
   const [isOrderIncorrect, setIsOrderIncorrect] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hp, setHP] = useState(100);
+  const [hasWon, setHasWon] = useState(false);
 
   const moveCard = useCallback(
     (dragIndex: number, hoverIndex: number) => {
@@ -61,43 +63,74 @@ export const Container: FC = () => {
       JSON.stringify(levels[currentLevel].correctOrder);
 
     if (isCorrect) {
-      setIsModalOpen(true);
-
       if (currentLevel < levels.length - 1) {
         setCurrentLevel(currentLevel + 1);
         setCards(levels[currentLevel + 1].cards);
         setIsOrderIncorrect(false);
+        // Increase HP by 10, max of 100
+        setHP(Math.min(hp + 10, 100));
+      } else {
+        setHasWon(true);
       }
+      setIsModalOpen(true);
     } else {
       setIsOrderIncorrect(true);
+      // Decrease HP by 10
+      setHP(hp - 10);
+      if (hp - 10 <= 0) {
+        setIsModalOpen(true);
+      }
     }
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    if (hasWon) {
+      setHasWon(false);
+      restartGame();
+    }
   };
 
-  // Access the level, title, and imagePath from the current level
+  const restartGame = () => {
+    setCurrentLevel(0);
+    setCards(levels[0].cards);
+    setHP(100);
+    setIsOrderIncorrect(false);
+    setIsModalOpen(false);
+    setHasWon(false);
+  };
+
   const currentLevelData: Level = levels[currentLevel];
   const { level, title, imagePath } = currentLevelData;
 
   return (
     <>
       <div style={style}>
-        <h1>{level}</h1>
-        <h2>{title}</h2>
-        {cards.map((card, i) => renderCard(card, i))}
-        <button onClick={checkOrder}>Check Order</button>
-        {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
-        <img src={process.env.PUBLIC_URL + imagePath} alt={`Level ${level}`} />
+        <div>
+          <h1>HP</h1>
+          <h2>{hp}</h2>
+        </div>
+        <div>
+          <h1>{title}</h1>
+          <h2>{level}</h2>
+          <div>{cards.map((card, i) => renderCard(card, i))}</div>
+          <Button size="4" variant="surface" onClick={checkOrder}>
+            Check Order
+          </Button>
+          {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
+        </div>
+        <div>
+          <img
+            src={process.env.PUBLIC_URL + imagePath}
+            alt={`Level ${level}`}
+          />
+        </div>
       </div>
-
-      {/* Modal for advancing to the next level */}
 
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        contentLabel="Advance to Next Level"
+        contentLabel="Modal"
         style={{
           content: {
             top: "50%",
@@ -109,11 +142,26 @@ export const Container: FC = () => {
           },
         }}
       >
-        <h2>Success!</h2>
-        <p>
-          The order is correct! Click below to advance to the next level. +10hp
-        </p>
-        <button onClick={closeModal}>Close</button>
+        {hp <= 0 ? (
+          <>
+            <h2>You Lost!</h2>
+            <button onClick={restartGame}>Play Again</button>
+          </>
+        ) : hasWon ? (
+          <>
+            <h2>Congratulations! You Win!</h2>
+            <button onClick={restartGame}>Play Again</button>
+          </>
+        ) : (
+          <>
+            <h2>Success!</h2>
+            <p>
+              The order is correct! Click below to advance to the next level.
+              +10hp
+            </p>
+            <button onClick={closeModal}>Close</button>
+          </>
+        )}
       </Modal>
     </>
   );

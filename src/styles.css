@@ -8,8 +8,22 @@ button {
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #fcfcfc;
-  cursor: pointer;
+  cursor: pointer !important;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  margin: auto;
+  margin: 5px;
+}
+
+img {
+  border: 2px solid rgb(48, 223, 136);
+  width: 500px;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: -20px;
 }

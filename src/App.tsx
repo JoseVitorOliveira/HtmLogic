@@ -3,7 +3,7 @@ import { Container } from "./Container";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Container />
     </div>
   );
