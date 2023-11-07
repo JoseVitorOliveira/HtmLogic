@@ -25,18 +25,23 @@ export const Container: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hp, setHP] = useState(100);
   const [hasWon, setHasWon] = useState(false);
+  const [htmlPreview, setHtmlPreview] = useState(""); // New state for HTML preview
 
   const moveCard = useCallback(
     (dragIndex: number, hoverIndex: number) => {
       const dragCard = cards[dragIndex];
-      setCards(
-        update(cards, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragCard],
-          ],
-        })
-      );
+      const updatedCards = update(cards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragCard],
+        ],
+      });
+      setCards(updatedCards);
+
+      // Use setTimeout to ensure that the state has updated before generating the HTML preview
+      setTimeout(() => {
+        generateHtmlPreview(updatedCards);
+      });
     },
     [cards]
   );
@@ -67,6 +72,7 @@ export const Container: FC = () => {
         setCurrentLevel(currentLevel + 1);
         setCards(levels[currentLevel + 1].cards);
         setIsOrderIncorrect(false);
+        setHtmlPreview("");
         // Increase HP by 10, max of 100
         setHP(Math.min(hp + 10, 100));
       } else {
@@ -81,6 +87,13 @@ export const Container: FC = () => {
         setIsModalOpen(true);
       }
     }
+  };
+
+  const generateHtmlPreview = (updatedCards: any) => {
+    const htmlStructure = updatedCards
+      .map((card: any) => `<div>${card.text}</div>`)
+      .join("");
+    setHtmlPreview(htmlStructure);
   };
 
   const closeModal = () => {
@@ -125,6 +138,14 @@ export const Container: FC = () => {
             alt={`Level ${level}`}
           />
         </div>
+      </div>
+
+      <div>
+        <h1>HTML Preview</h1>
+        <div
+          className="html-preview"
+          dangerouslySetInnerHTML={{ __html: htmlPreview }}
+        ></div>
       </div>
 
       <Modal
