@@ -4,6 +4,7 @@ import { Card } from "./Card";
 import { Level, levels } from "./levels";
 import Modal from "./components/Modal";
 import { Button } from "@radix-ui/themes";
+import HTMLPreview from "./components/HtmlPreview";
 
 const style: React.CSSProperties = {
   width: "100%",
@@ -140,13 +141,7 @@ export const Container: FC = () => {
         </div>
       </div>
 
-      <div>
-        <h1>HTML Preview</h1>
-        <div
-          className="html-preview"
-          dangerouslySetInnerHTML={{ __html: htmlPreview }}
-        ></div>
-      </div>
+      <HTMLPreview htmlPreview={htmlPreview} />
 
       <Modal
         isModalOpen={isModalOpen}
