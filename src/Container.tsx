@@ -2,7 +2,7 @@ import React, { FC, useCallback, useState } from "react";
 import update from "immutability-helper";
 import { Card } from "./Card";
 import { Level, levels } from "./levels";
-import Modal from "react-modal";
+import Modal from "./components/Modal";
 import { Button } from "@radix-ui/themes";
 
 const style: React.CSSProperties = {
@@ -149,41 +149,12 @@ export const Container: FC = () => {
       </div>
 
       <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Modal"
-        style={{
-          content: {
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-50%, -50%)",
-          },
-        }}
-      >
-        {hp <= 0 ? (
-          <>
-            <h2>You Lost!</h2>
-            <button onClick={restartGame}>Play Again</button>
-          </>
-        ) : hasWon ? (
-          <>
-            <h2>Congratulations! You Win!</h2>
-            <button onClick={restartGame}>Play Again</button>
-          </>
-        ) : (
-          <>
-            <h2>Success!</h2>
-            <p>
-              The order is correct! Click below to advance to the next level.
-              +10hp
-            </p>
-            <button onClick={closeModal}>Close</button>
-          </>
-        )}
-      </Modal>
+        isModalOpen={isModalOpen}
+        hp={hp}
+        hasWon={hasWon}
+        closeModal={closeModal}
+        restartGame={restartGame}
+      />
     </>
   );
 };
