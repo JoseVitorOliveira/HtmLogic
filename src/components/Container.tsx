@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useState } from "react";
 import update from "immutability-helper";
 import { Card } from "./Card";
-import { Level, levels } from "./levels";
-import Modal from "./components/Modal";
+import { Level, levels } from "../levels";
+import Modal from "./Modal";
 import { Button } from "@radix-ui/themes";
-import HTMLPreview from "./components/HtmlPreview";
+import HTMLPreview from "./HtmlPreview";
 
 const style: React.CSSProperties = {
   width: "100%",

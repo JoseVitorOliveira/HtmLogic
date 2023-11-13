@@ -2,10 +2,8 @@ import type { Identifier, XYCoord } from "dnd-core";
 import type { FC } from "react";
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { Tooltip, IconButton } from "@radix-ui/themes";
-import { QuestionMarkIcon } from "@radix-ui/react-icons";
 
-import { ItemTypes } from "./ItemTypes";
+import { ItemTypes } from "../ItemTypes";
 
 const style = {
   border: "1px dashed black",
@@ -110,11 +108,6 @@ export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
   return (
     <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
       {text}
-      <Tooltip content="Tooltip">
-        <IconButton radius="full">
-          <QuestionMarkIcon />
-        </IconButton>
-      </Tooltip>
     </div>
   );
 };
