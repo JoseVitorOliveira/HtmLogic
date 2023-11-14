@@ -4,10 +4,9 @@ interface HTMLPreviewProps {
 
 const HTMLPreview = ({ htmlPreview }: HTMLPreviewProps) => {
   return (
-    <div>
-      <h1>HTML Preview</h1>
+    <div className="bg-[#e0e0e]">
       <div
-        className="html-preview"
+        className="text-black"
         dangerouslySetInnerHTML={{ __html: htmlPreview }}
       ></div>
     </div>

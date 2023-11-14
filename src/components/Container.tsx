@@ -3,16 +3,7 @@ import update from "immutability-helper";
 import { Card } from "./Card";
 import { Level, levels } from "../levels";
 import Modal from "./Modal";
-import { Button } from "@radix-ui/themes";
 import HTMLPreview from "./HtmlPreview";
-
-const style: React.CSSProperties = {
-  width: "100%",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  flexDirection: "row",
-};
 
 export interface Item {
   id: number;
@@ -118,30 +109,75 @@ export const Container: FC = () => {
   const { level, title, imagePath } = currentLevelData;
 
   return (
-    <>
-      <div style={style}>
-        <div>
-          <h1>HP</h1>
-          <h2>{hp}</h2>
+    <div className="mx-[280px] text-gray-50">
+      {/* header */}
+      <header className="p-1 uppercase border flex justify-between items-center h-[60px] font-bold">
+        <h1 className="grandient_logo text-5xl">HtmLogic</h1>
+        <div className="flex items-center justify-center border">
+          <h2>Level {level}</h2>
         </div>
-        <div>
-          <h1>{title}</h1>
-          <h2>{level}</h2>
-          <div>{cards.map((card, i) => renderCard(card, i))}</div>
-          <Button size="4" variant="surface" onClick={checkOrder}>
-            Check Order
-          </Button>
-          {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
-        </div>
-        <div>
+        <h2>{hp}hp</h2>
+      </header>
+      {/* title + description */}
+      <div className="border w-1/2 mt-2">
+        <h1>{title}</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+          possimus quis quod animi labore aperiam ullam repellat error
+          praesentium nihil amet, ea ratione veniam nemo corporis cumque
+          incidunt rem quia aliquam similique aspernatur enim voluptate. Fuga
+          voluptate iste, sed velit quod odit mollitia et ut! Eveniet molestiae
+          quasi harum illum!
+          {/* {description} */}
+        </p>
+      </div>
+      {/* objective + preview */}
+      <div className="flex justify-between content-center mt-2">
+        <div className="border h-[200px] w-1/3">
+          <h1>Objetivo</h1>
           <img
+            className="w-1/3"
             src={process.env.PUBLIC_URL + imagePath}
             alt={`Level ${level}`}
           />
         </div>
+        <div className="border h-[200px] w-1/3 bg-[#e0e0e0]">
+          <h1>Preview</h1>
+          <HTMLPreview htmlPreview={htmlPreview} />
+        </div>
       </div>
-
-      <HTMLPreview htmlPreview={htmlPreview} />
+      {/* cards container */}
+      <div className="border mt-2 flex">
+        <div className="text-center bg-[#999999] px-2">
+          1
+          <br />
+          2
+          <br />
+          3
+          <br />
+          4
+          <br />
+          5
+          <br />
+          6
+          <br />
+          7
+          <br />
+          8
+          <br />
+          9
+          <br />
+          10
+          <br />
+        </div>
+        <div className="flex-1 bg-[#e0e0e0]">
+          <div className="bg-[#e0e0e0]">
+            {cards.map((card, i) => renderCard(card, i))}
+          </div>
+          <button onClick={checkOrder}>Check Order</button>
+          {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
+        </div>
+      </div>
 
       <Modal
         isModalOpen={isModalOpen}
@@ -150,7 +186,7 @@ export const Container: FC = () => {
         closeModal={closeModal}
         restartGame={restartGame}
       />
-    </>
+    </div>
   );
 };
 
