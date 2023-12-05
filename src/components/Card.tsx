@@ -6,9 +6,10 @@ import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "../ItemTypes";
 
 const style = {
-  border: "1px solid black",
+  borderTop: "1px dashed black",
+  borderBottom: "1px dashed black",
   padding: "0.5rem 1rem",
-  backgroundColor: "#e0e0e0",
+  backgroundColor: "#f4f4f4",
   color: "black",
   display: "flex",
   justifyContent: "space-between",
@@ -16,6 +17,8 @@ const style = {
   cursor: "grab",
   width: "100%",
   height: "25px",
+  fontSize: "18px",
+  fontFamily: "monospace",
 };
 
 export interface CardProps {
@@ -107,7 +110,12 @@ export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
   return (
-    <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
+    <div
+      className="mt-[-1px]"
+      ref={ref}
+      style={{ ...style, opacity }}
+      data-handler-id={handlerId}
+    >
       {text}
     </div>
   );

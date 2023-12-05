@@ -19,6 +19,8 @@ const ModalComponent = ({
     <Modal
       isOpen={isModalOpen}
       onRequestClose={closeModal}
+      shouldCloseOnOverlayClick={false}
+      shouldCloseOnEsc={false}
       contentLabel="Modal"
       style={{
         content: {
@@ -28,6 +30,7 @@ const ModalComponent = ({
           bottom: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
+          backgroundColor: "#000",
         },
       }}
     >
@@ -48,7 +51,9 @@ const ModalComponent = ({
             The order is correct! Click below to advance to the next level.
             +10hp
           </p>
-          <button onClick={closeModal}>Close</button>
+          <button className="border" onClick={closeModal}>
+            Close
+          </button>
         </>
       )}
     </Modal>

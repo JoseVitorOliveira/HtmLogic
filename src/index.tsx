@@ -6,7 +6,7 @@ import "./styles.css";
 
 function AppWrapper() {
   return (
-    <div className="App">
+    <div>
       <DndProvider backend={HTML5Backend}>
         <App />
       </DndProvider>

@@ -13,7 +13,7 @@ export interface Level {
 
 export const levels: Level[] = [
   {
-    level: "1/3",
+    level: "1 de 3",
     title: "Navigation Bar",
     imagePath: "/assets/level1.png",
     cards: [
@@ -40,7 +40,7 @@ export const levels: Level[] = [
     ],
   },
   {
-    level: "2/3",
+    level: "2 de 3",
     title: "Form",
     imagePath: "/assets/level2.png",
     cards: [
@@ -64,7 +64,7 @@ export const levels: Level[] = [
   },
 
   {
-    level: "3/3",
+    level: "3 de 3",
     title: "Section",
     imagePath: "/assets/level3.png",
     cards: [

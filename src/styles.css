@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Roboto */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&family=Overpass:wght@400;700&family=Roboto:wght@100;300;400;700&family=Ubuntu:wght@400;500;700&display=swap");
+/* Press Start 2P */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+/* Patrick Hand */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Patrick+Hand&display=swap");
 
-html,
-body {
-  background-color: #194745;
+:root {
+  --main-font: "Roboto", sans-serif;
+  --font-logo: "Press Start 2P", cursive;
+  --font-title: "Patrick Hand", cursive;
 }
 
 * {
@@ -16,8 +22,25 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+body,
+html {
+  background-color: #1d232a;
+}
+
 @layer utilities {
   .grandient_logo {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500;
   }
+}
+
+.custom_bottom {
+  bottom: 188px;
+}
+
+.logo_font {
+  font-family: "Press Start 2P", cursive;
+}
+
+.title_font {
+  font-family: "Patrick Hand", cursive;
 }

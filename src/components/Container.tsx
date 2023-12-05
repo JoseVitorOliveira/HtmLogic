@@ -1,9 +1,12 @@
+// Container.tsx
 import React, { FC, useCallback, useState } from "react";
 import update from "immutability-helper";
 import { Card } from "./Card";
 import { Level, levels } from "../levels";
 import Modal from "./Modal";
 import HTMLPreview from "./HtmlPreview";
+import CodePanel from "./CodePanel";
+import Header from "./Header";
 
 export interface Item {
   id: number;
@@ -17,7 +20,7 @@ export const Container: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hp, setHP] = useState(100);
   const [hasWon, setHasWon] = useState(false);
-  const [htmlPreview, setHtmlPreview] = useState(""); // New state for HTML preview
+  const [htmlPreview, setHtmlPreview] = useState("");
 
   const moveCard = useCallback(
     (dragIndex: number, hoverIndex: number) => {
@@ -30,7 +33,6 @@ export const Container: FC = () => {
       });
       setCards(updatedCards);
 
-      // Use setTimeout to ensure that the state has updated before generating the HTML preview
       setTimeout(() => {
         generateHtmlPreview(updatedCards);
       });
@@ -65,7 +67,6 @@ export const Container: FC = () => {
         setCards(levels[currentLevel + 1].cards);
         setIsOrderIncorrect(false);
         setHtmlPreview("");
-        // Increase HP by 10, max of 100
         setHP(Math.min(hp + 10, 100));
       } else {
         setHasWon(true);
@@ -73,7 +74,6 @@ export const Container: FC = () => {
       setIsModalOpen(true);
     } else {
       setIsOrderIncorrect(true);
-      // Decrease HP by 10
       setHP(hp - 10);
       if (hp - 10 <= 0) {
         setIsModalOpen(true);
@@ -109,84 +109,66 @@ export const Container: FC = () => {
   const { level, title, imagePath } = currentLevelData;
 
   return (
-    <div className="mx-[280px] text-gray-50">
-      {/* header */}
-      <header className="p-1 uppercase border flex justify-between items-center h-[60px] font-bold">
-        <h1 className="grandient_logo text-5xl">HtmLogic</h1>
-        <div className="flex items-center justify-center border">
-          <h2>Level {level}</h2>
+    <>
+      <Header level={level} hp={hp} />
+      <div className="mx-[280px]">
+        <div className="w-full mt-6 flex justify-center">
+          <h1 className="title_font text-5xl text-white">
+            Construa um{" "}
+            <span className="title_font text-[#BB62E5] text-5xl">{title}</span>
+          </h1>
         </div>
-        <h2>{hp}hp</h2>
-      </header>
-      {/* title + description */}
-      <div className="border w-1/2 mt-2">
-        <h1>{title}</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-          possimus quis quod animi labore aperiam ullam repellat error
-          praesentium nihil amet, ea ratione veniam nemo corporis cumque
-          incidunt rem quia aliquam similique aspernatur enim voluptate. Fuga
-          voluptate iste, sed velit quod odit mollitia et ut! Eveniet molestiae
-          quasi harum illum!
-          {/* {description} */}
-        </p>
-      </div>
-      {/* objective + preview */}
-      <div className="flex justify-between content-center mt-2">
-        <div className="border h-[200px] w-1/3">
-          <h1>Objetivo</h1>
-          <img
-            className="w-1/3"
-            src={process.env.PUBLIC_URL + imagePath}
-            alt={`Level ${level}`}
-          />
-        </div>
-        <div className="border h-[200px] w-1/3 bg-[#e0e0e0]">
-          <h1>Preview</h1>
-          <HTMLPreview htmlPreview={htmlPreview} />
-        </div>
-      </div>
-      {/* cards container */}
-      <div className="border mt-2 flex">
-        <div className="text-center bg-[#999999] px-2">
-          1
-          <br />
-          2
-          <br />
-          3
-          <br />
-          4
-          <br />
-          5
-          <br />
-          6
-          <br />
-          7
-          <br />
-          8
-          <br />
-          9
-          <br />
-          10
-          <br />
-        </div>
-        <div className="flex-1 bg-[#e0e0e0]">
-          <div className="bg-[#e0e0e0]">
-            {cards.map((card, i) => renderCard(card, i))}
+        <div className="flex justify-between content-center gap-6">
+          <div className="w-1/3 flex flex-col">
+            <h2 className="text-center text-white title_font text-xl">
+              OBJETIVO
+            </h2>
+            <div className="bg-[#D9D9D9] rounded-sm h-[250px]"></div>
           </div>
-          <button onClick={checkOrder}>Check Order</button>
-          {isOrderIncorrect ? <p>The order is incorrect.</p> : null}
+          <div className="w-2/3 flex flex-col">
+            <h2 className="text-center text-white title_font text-xl">
+              INSTRUÇÕES/DICAS
+            </h2>
+            <div className="bg-[#D9D9D9] rounded-sm h-[250px]"></div>
+          </div>
         </div>
+        <div className="display flex justify-around w-full">
+          <div className="w-1/2">
+            <h2 className="text-center text-white title_font text-xl">
+              ARRASTE E SOLTE AS TAGS HTML
+            </h2>
+          </div>
+          <div className="w-1/2">
+            <h2 className="text-center text-white title_font text-xl">
+              PREVIEW
+            </h2>
+          </div>
+        </div>
+        <div className="flex gap-5">
+          <div className="bg-[#D9D9D9] w-1/2 rounded-sm relative">
+            <CodePanel
+              cards={cards}
+              isOrderIncorrect={isOrderIncorrect}
+              moveCard={moveCard}
+              renderCard={renderCard}
+            />
+            <button className="bg-red-500" onClick={checkOrder}>
+              Próximo
+            </button>
+          </div>
+          <div className="bg-[#D9D9D9] w-1/2 rounded-sm">
+            <HTMLPreview htmlPreview={htmlPreview} />
+          </div>
+        </div>
+        <Modal
+          isModalOpen={isModalOpen}
+          hp={hp}
+          hasWon={hasWon}
+          closeModal={closeModal}
+          restartGame={restartGame}
+        />
       </div>
-
-      <Modal
-        isModalOpen={isModalOpen}
-        hp={hp}
-        hasWon={hasWon}
-        closeModal={closeModal}
-        restartGame={restartGame}
-      />
-    </div>
+    </>
   );
 };
 
