@@ -17,7 +17,7 @@ const style = {
   cursor: "grab",
   width: "100%",
   height: "25px",
-  fontSize: "18px",
+  fontSize: "16px",
   fontFamily: "monospace",
 };
 

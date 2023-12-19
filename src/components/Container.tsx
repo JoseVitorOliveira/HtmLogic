@@ -7,6 +7,7 @@ import Modal from "./Modal";
 import HTMLPreview from "./HtmlPreview";
 import CodePanel from "./CodePanel";
 import Header from "./Header";
+import buildHtmlString from "../utils/buildHtmlString";
 
 export interface Item {
   id: number;
@@ -83,7 +84,7 @@ export const Container: FC = () => {
 
   const generateHtmlPreview = (updatedCards: any) => {
     const htmlStructure = updatedCards
-      .map((card: any) => `<div>${card.text}</div>`)
+      .map((card: any) => `${card.text}`)
       .join("");
     setHtmlPreview(htmlStructure);
   };
@@ -103,49 +104,54 @@ export const Container: FC = () => {
     setIsOrderIncorrect(false);
     setIsModalOpen(false);
     setHasWon(false);
+    setHtmlPreview("");
   };
 
   const currentLevelData: Level = levels[currentLevel];
-  const { level, title, imagePath } = currentLevelData;
+  const { level, title, instructions, correctOrder } = currentLevelData;
 
   return (
     <>
       <Header level={level} hp={hp} />
+      {console.log(buildHtmlString(correctOrder))}
       <div className="mx-[280px]">
         <div className="w-full mt-6 flex justify-center">
-          <h1 className="title_font text-5xl text-white">
-            Construa um{" "}
-            <span className="title_font text-[#BB62E5] text-5xl">{title}</span>
-          </h1>
+          <span className="title_font text-[#BB62E5] text-5xl mb-5">
+            {title}
+          </span>
         </div>
         <div className="flex justify-between content-center gap-6">
           <div className="w-1/3 flex flex-col">
             <h2 className="text-center text-white title_font text-xl">
               OBJETIVO
             </h2>
-            <div className="bg-[#D9D9D9] rounded-sm h-[250px]"></div>
+            <div className="bg-[#D9D9D9] rounded-sm h-[250px] flex justify-center items-center">
+              <HTMLPreview htmlPreview={buildHtmlString(correctOrder)} />
+            </div>
           </div>
           <div className="w-2/3 flex flex-col">
             <h2 className="text-center text-white title_font text-xl">
               INSTRUÇÕES/DICAS
             </h2>
-            <div className="bg-[#D9D9D9] rounded-sm h-[250px]"></div>
+            <div className="bg-[#D9D9D9] rounded-sm h-[250px]">
+              <p className=" ml-2 text-black text-lg">{instructions}</p>
+            </div>
           </div>
         </div>
-        <div className="display flex justify-around w-full">
-          <div className="w-1/2">
+        <div className="display flex justify-around w-full mt-3">
+          <div className="w-2/3">
             <h2 className="text-center text-white title_font text-xl">
               ARRASTE E SOLTE AS TAGS HTML
             </h2>
           </div>
-          <div className="w-1/2">
+          <div className="w-1/3">
             <h2 className="text-center text-white title_font text-xl">
               PREVIEW
             </h2>
           </div>
         </div>
         <div className="flex gap-5">
-          <div className="bg-[#D9D9D9] w-1/2 rounded-sm relative">
+          <div className="bg-[#D9D9D9] w-2/3 rounded-sm relative">
             <CodePanel
               cards={cards}
               isOrderIncorrect={isOrderIncorrect}
@@ -156,7 +162,7 @@ export const Container: FC = () => {
               Próximo
             </button>
           </div>
-          <div className="bg-[#D9D9D9] w-1/2 rounded-sm">
+          <div className="bg-[#D9D9D9] w-1/3 rounded-sm flex justify-center items-center">
             <HTMLPreview htmlPreview={htmlPreview} />
           </div>
         </div>

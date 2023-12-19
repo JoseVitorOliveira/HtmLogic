@@ -24,7 +24,10 @@ const CardsContainer: FC<CardsContainerProps> = ({
     <div className="flex justify-between h-[265px] rounded-sm">
       <div className="text-center bg-[#574F4F] text-white w-[35px] rounded-sm select-none">
         {linesOfCode.map((line) => (
-          <div className="text-[#F3F4F6] text-opacity-40" key={line.toString()}>
+          <div
+            className="text-[#F3F4F6]  text-opacity-40"
+            key={line.toString()}
+          >
             {line}
           </div>
         ))}
@@ -34,7 +37,7 @@ const CardsContainer: FC<CardsContainerProps> = ({
           {cards.map((card, i) => renderCard(card, i))}
         </div>
         {isOrderIncorrect ? (
-          <p className="text-red-500">The order is incorrect.</p>
+          <p className="text-red-500">The order is incorrect. -10hp</p>
         ) : null}
       </div>
     </div>

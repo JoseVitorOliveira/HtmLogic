@@ -31,27 +31,30 @@ const ModalComponent = ({
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
           backgroundColor: "#000",
+          color: "#fff",
         },
       }}
     >
       {hp <= 0 ? (
         <>
-          <h2>You Lost!</h2>
-          <button onClick={restartGame}>Play Again</button>
+          <h2>Você Perdeu!</h2>
+          <button className="border bg-white text-black" onClick={restartGame}>
+            Jogar Novamente
+          </button>
         </>
       ) : hasWon ? (
         <>
-          <h2>Congratulations! You Win!</h2>
-          <button onClick={restartGame}>Play Again</button>
+          <h2>Parabéns! Você Venceu!</h2>
+          <button className="border bg-white text-black" onClick={restartGame}>
+            Jogar Novamente
+          </button>
         </>
       ) : (
         <>
-          <h2>Success!</h2>
-          <p>
-            The order is correct! Click below to advance to the next level.
-            +10hp
-          </p>
-          <button className="border" onClick={closeModal}>
+          <h2>Muito Bem!</h2>
+          <p>Você organizou as tags na ordem correta!</p>
+          <h2>Clique abaixo para avançar para o próximo nível. +10hp</h2>
+          <button className="border bg-white text-black" onClick={closeModal}>
             Close
           </button>
         </>
