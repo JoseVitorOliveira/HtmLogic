@@ -56,7 +56,7 @@ export const Container: FC = () => {
     [moveCard]
   );
 
-  const checkOrder = () => {
+  /*   const checkOrder = () => {
     const currentOrder = cards.map((card) => card.text);
     const isCorrect =
       JSON.stringify(currentOrder) ===
@@ -79,6 +79,40 @@ export const Container: FC = () => {
       if (hp - 10 <= 0) {
         setIsModalOpen(true);
       }
+    }
+  };
+ */
+  const checkOrder = () => {
+    const currentOrder = cards.map((card) => card.text);
+    const correctOrder = levels[currentLevel].correctOrder;
+
+    const incorrectLines = currentOrder.reduce((acc, cardText, index) => {
+      if (cardText !== correctOrder[index]) {
+        acc.push((index + 1) as never); // Line numbers start from 1
+      }
+      return acc;
+    }, []);
+
+    const isCorrect = incorrectLines.length === 0;
+
+    if (isCorrect) {
+      if (currentLevel < levels.length - 1) {
+        setCurrentLevel(currentLevel + 1);
+        setCards(levels[currentLevel + 1].cards);
+        setIsOrderIncorrect(false);
+        setHtmlPreview("");
+        setHP(Math.min(hp + 10, 100));
+      } else {
+        setHasWon(true);
+      }
+      setIsModalOpen(true);
+    } else {
+      setIsOrderIncorrect(true);
+      setHP(hp - 10);
+      if (hp - 10 <= 0) {
+        setIsModalOpen(true);
+      }
+      alert(`Incorrect lines: ${incorrectLines}`);
     }
   };
 
@@ -113,7 +147,6 @@ export const Container: FC = () => {
   return (
     <>
       <Header level={level} hp={hp} />
-      {console.log(buildHtmlString(correctOrder))}
       <div className="mx-[280px]">
         <div className="w-full mt-6 flex justify-center">
           <span className="title_font text-[#BB62E5] text-5xl mb-5">
