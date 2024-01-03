@@ -1,0 +1,16 @@
+🟥!!!
+
+[x] Ferramenta de ajuda/tutorial.
+[ ] Feedback de erro (qual linha está incorreta).
+[ ] Novo layout com o DnD no centro.
+[ ] Estilo dentro dos containers.
+[ ] Estilo do modal.
+
+🟧!!
+
+[ ] Animações.
+[ ] Elaborar os níveis.
+
+🟨!
+
+[ ] Responsividade
