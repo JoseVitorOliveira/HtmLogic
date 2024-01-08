@@ -1,6 +1,4 @@
-// CardsContainer.tsx
 import React, { FC } from "react";
-import { Card } from "./Card";
 
 interface CardsContainerProps {
   cards: { id: number; text: string }[];
@@ -18,24 +16,22 @@ const CardsContainer: FC<CardsContainerProps> = ({
   moveCard,
   renderCard,
 }) => {
-  const linesOfCode = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const linesOfCode = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
-    <div className="flex justify-between h-[265px] rounded-sm">
-      <div className="text-center bg-[#574F4F] text-white w-[35px] rounded-sm select-none">
+    <div className="flex justify-between h-[300px] rounded-sm border">
+      <div className="bg-[#403b3b] text-white w-[35px] rounded-sm select-none">
         {linesOfCode.map((line) => (
           <div
-            className="text-[#F3F4F6]  text-opacity-40"
+            className="flex justify-center lines_font py-[0.2rem] text-[#cecece] h-[30px]"
             key={line.toString()}
           >
             {line}
           </div>
         ))}
       </div>
-      <div className="flex-1 bg-[#e0e0e0]">
-        <div className="mt-[0.7px]">
-          {cards.map((card, i) => renderCard(card, i))}
-        </div>
+      <div className="flex-1 bg-[#403b3b]">
+        <div>{cards.map((card, i) => renderCard(card, i))}</div>
         {isOrderIncorrect ? (
           <p className="text-red-500">The order is incorrect. -10hp</p>
         ) : null}

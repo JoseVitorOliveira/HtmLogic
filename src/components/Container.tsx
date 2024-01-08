@@ -1,5 +1,5 @@
 // Container.tsx
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import update from "immutability-helper";
 import { Card } from "./Card";
 import { Level, levels } from "../levels";
@@ -40,6 +40,10 @@ export const Container: FC = () => {
     },
     [cards]
   );
+
+  useEffect(() => {
+    generateHtmlPreview(cards);
+  }, [cards]);
 
   const renderCard = useCallback(
     (card: { id: number; text: string }, index: number) => {
@@ -127,50 +131,27 @@ export const Container: FC = () => {
             {title}
           </span>
         </div>
-        <div className="flex justify-between content-center gap-6">
-          <div className="w-1/3 flex flex-col">
-            <h2 className="text-center text-white title_font text-xl">
-              OBJETIVO
-            </h2>
+        <div className="flex justify-evenly border w-full content-center gap-6">
+          <div className="flex gap-10">
+            {/* objetivo */}
             <div className="bg-[#D9D9D9] rounded-sm h-[250px] flex justify-center items-center">
               <HTMLPreview htmlPreview={buildHtmlString(correctOrder)} />
             </div>
-          </div>
-          <div className="w-2/3 flex flex-col">
-            <h2 className="text-center text-white title_font text-xl">
-              INSTRUÇÕES/DICAS
-            </h2>
-            <div className="bg-[#D9D9D9] rounded-sm h-[250px]">
-              <p className=" ml-2 text-black text-lg">{instructions}</p>
+            {/* dnd */}
+            <div>
+              <CodePanel
+                cards={cards}
+                isOrderIncorrect={isOrderIncorrect}
+                moveCard={moveCard}
+                renderCard={renderCard}
+              />
             </div>
-          </div>
-        </div>
-        <div className="display flex justify-around w-full mt-3">
-          <div className="w-2/3">
-            <h2 className="text-center text-white title_font text-xl">
-              ARRASTE E SOLTE AS TAGS HTML
-            </h2>
-          </div>
-          <div className="w-1/3">
-            <h2 className="text-center text-white title_font text-xl">
-              PREVIEW
-            </h2>
-          </div>
-        </div>
-        <div className="flex gap-5">
-          <div className="bg-[#D9D9D9] w-2/3 rounded-sm relative">
-            <CodePanel
-              cards={cards}
-              isOrderIncorrect={isOrderIncorrect}
-              moveCard={moveCard}
-              renderCard={renderCard}
-            />
-            <button className="bg-red-500" onClick={checkOrder}>
+            {/*             <button className="bg-red-500" onClick={checkOrder}>
               Próximo
-            </button>
-          </div>
-          <div className="bg-[#D9D9D9] w-1/3 rounded-sm flex justify-center items-center">
-            <HTMLPreview htmlPreview={htmlPreview} />
+            </button> */}
+            <div className="bg-[#D9D9D9] rounded-sm flex justify-center items-center">
+              <HTMLPreview htmlPreview={htmlPreview} />
+            </div>
           </div>
         </div>
         <Modal

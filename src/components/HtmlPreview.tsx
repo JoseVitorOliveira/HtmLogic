@@ -5,7 +5,7 @@ interface HTMLPreviewProps {
 const HTMLPreview = ({ htmlPreview }: HTMLPreviewProps) => {
   return (
     <div className="flex justify-center items-center">
-      <div className="" dangerouslySetInnerHTML={{ __html: htmlPreview }}></div>
+      <div dangerouslySetInnerHTML={{ __html: htmlPreview }}></div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const style = {
   boxShadow: "0 0 2px rgba(255, 255, 255, 0.7)",
   color: "black",
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "center",
   alignItems: "center",
   cursor: "grab",
   width: "100%",

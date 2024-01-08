@@ -5,7 +5,7 @@ import GameInstructions from "./components/GameInstructions";
 function App() {
   return (
     <main>
-      <GameInstructions />
+      {/* <GameInstructions /> */}
       <Container />
     </main>
   );
