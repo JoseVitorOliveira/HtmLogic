@@ -4,19 +4,19 @@ import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
 import { ItemTypes } from "../ItemTypes";
+import Code from "./SyntaxHighlighter";
 
 const style = {
-  borderTop: "1px dashed black",
-  borderBottom: "1px dashed black",
   padding: "0.5rem 1rem",
-  backgroundColor: "#f4f4f4",
+  backgroundColor: "#2D2D2D",
+  boxShadow: "0 0 2px rgba(255, 255, 255, 0.7)",
   color: "black",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   cursor: "grab",
   width: "100%",
-  height: "25px",
+  height: "30px",
   fontSize: "16px",
   fontFamily: "monospace",
 };
@@ -111,12 +111,12 @@ export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
   drag(drop(ref));
   return (
     <div
-      className="mt-[-1px]"
+      className=""
       ref={ref}
       style={{ ...style, opacity }}
       data-handler-id={handlerId}
     >
-      {text}
+      {Code({ code: text })}
     </div>
   );
 };
