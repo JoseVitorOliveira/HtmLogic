@@ -2,14 +2,13 @@ import type { Identifier, XYCoord } from "dnd-core";
 import type { FC } from "react";
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
-
 import { ItemTypes } from "../ItemTypes";
 import Code from "./SyntaxHighlighter";
 
 const style = {
   padding: "0.5rem 1rem",
   backgroundColor: "#2D2D2D",
-  boxShadow: "0 0 2px rgba(255, 255, 255, 0.7)",
+  boxShadow: "0 0 1px rgba(255, 255, 255, 0.7)",
   color: "black",
   display: "flex",
   justifyContent: "center",
@@ -17,8 +16,6 @@ const style = {
   cursor: "grab",
   width: "100%",
   height: "30px",
-  fontSize: "16px",
-  fontFamily: "monospace",
 };
 
 export interface CardProps {

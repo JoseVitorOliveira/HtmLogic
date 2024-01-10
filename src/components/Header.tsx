@@ -7,7 +7,7 @@ interface HeaderProps {
 
 const Header = ({ level, hp }: HeaderProps) => {
   return (
-    <header className="px-[280px] select-none flex justify-between items-center h-[60px] shadow-2xl bg-slate-800">
+    <header className="px-[200px] select-none flex justify-between items-center h-[60px] shadow-2xl bg-slate-800">
       <h1 className="grandient_logo logo_font text-3xl uppercase mt-1">
         HtmLogic
       </h1>

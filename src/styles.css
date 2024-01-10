@@ -33,8 +33,10 @@ html {
   }
 }
 
-.custom_bottom {
-  bottom: 188px;
+.position_absolute {
+  position: absolute;
+  top: 93%;
+  left: 70%;
 }
 
 .logo_font {
@@ -48,3 +50,20 @@ html {
 .lines_font {
   font-family: "Courier New", Courier, monospace;
 }
+
+/* inside the containers */
+
+/* it works */
+
+/* .button_preview button {
+  background-color: #1d232a;
+  border: 1px solid #1d232a;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+ */

@@ -125,33 +125,39 @@ export const Container: FC = () => {
   return (
     <>
       <Header level={level} hp={hp} />
-      <div className="mx-[280px]">
+      <div className="mx-[200px]">
         <div className="w-full mt-6 flex justify-center">
           <span className="title_font text-[#BB62E5] text-5xl mb-5">
             {title}
           </span>
         </div>
-        <div className="flex justify-evenly border w-full content-center gap-6">
-          <div className="flex gap-10">
-            {/* objetivo */}
-            <div className="bg-[#D9D9D9] rounded-sm h-[250px] flex justify-center items-center">
-              <HTMLPreview htmlPreview={buildHtmlString(correctOrder)} />
-            </div>
-            {/* dnd */}
-            <div>
-              <CodePanel
-                cards={cards}
-                isOrderIncorrect={isOrderIncorrect}
-                moveCard={moveCard}
-                renderCard={renderCard}
-              />
-            </div>
-            {/*             <button className="bg-red-500" onClick={checkOrder}>
+        <div className="w-full flex m-5 items-center justify-center">
+          <div className="max-w-4xl p-6 bg-gray-800 rounded-lg shadow-md text-white text-center">
+            <p className="text-gray-300 text-justify">{instructions}</p>
+          </div>
+        </div>
+        <div className="flex justify-around w-full bg-gray-800">
+          {/* objetivo */}
+          <div className="bg-[#D9D9D9] rounded-sm h-[300px] w-[250px] flex justify-center items-center">
+            <HTMLPreview htmlPreview={buildHtmlString(correctOrder)} />
+          </div>
+          {/* dnd */}
+          <div className="relative">
+            <CodePanel
+              cards={cards}
+              isOrderIncorrect={isOrderIncorrect}
+              moveCard={moveCard}
+              renderCard={renderCard}
+            />
+            <button
+              className="bg-red-500 position_absolute rounded-none text-white"
+              onClick={checkOrder}
+            >
               Próximo
-            </button> */}
-            <div className="bg-[#D9D9D9] rounded-sm flex justify-center items-center">
-              <HTMLPreview htmlPreview={htmlPreview} />
-            </div>
+            </button>
+          </div>
+          <div className="bg-[#D9D9D9] rounded-sm h-[300px] w-[250px] flex justify-center items-center">
+            <HTMLPreview htmlPreview={htmlPreview} />
           </div>
         </div>
         <Modal

@@ -15,7 +15,8 @@ export const levels: Level[] = [
   {
     level: "1 de 3",
     title: "Forms, Inputs e Labels",
-    instructions: "Instruções 1",
+    instructions:
+      "Formulários em HTML são elementos que permitem a coleta de dados interativos dos usuários, usando tags como <form>, <input>, e <button>. Esses elementos possibilitam a criação de caixas de entrada, botões de envio, e outros controles para coletar informações que podem ser processadas por servidores web.",
     cards: [
       { id: 1, text: "<form>" },
       { id: 2, text: "</form>" },
