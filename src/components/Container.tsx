@@ -132,14 +132,18 @@ export const Container: FC = () => {
           </span>
         </div>
         <div className="w-full flex m-5 items-center justify-center">
-          <div className="max-w-4xl p-6 bg-gray-800 rounded-lg shadow-md text-white text-center">
+          <div className="max-w-4xl p-6 bg-gray-700 rounded-lg shadow-md text-white text-center">
             <p className="text-gray-300 text-justify">{instructions}</p>
           </div>
         </div>
-        <div className="flex justify-around w-full bg-gray-800">
+
+        <div className="flex justify-around mt-8 p-6">
           {/* objetivo */}
-          <div className="bg-[#D9D9D9] rounded-sm h-[300px] w-[250px] flex justify-center items-center">
-            <HTMLPreview htmlPreview={buildHtmlString(correctOrder)} />
+          <div>
+            <HTMLPreview
+              containerTitle="Objetivo"
+              htmlPreview={buildHtmlString(correctOrder)}
+            />
           </div>
           {/* dnd */}
           <div className="relative">
@@ -150,14 +154,14 @@ export const Container: FC = () => {
               renderCard={renderCard}
             />
             <button
-              className="bg-red-500 position_absolute rounded-none text-white"
+              className="bg-[#dc585a] rounded position_absolute p-2 title text-base text-gray-100"
               onClick={checkOrder}
             >
               Próximo
             </button>
           </div>
-          <div className="bg-[#D9D9D9] rounded-sm h-[300px] w-[250px] flex justify-center items-center">
-            <HTMLPreview htmlPreview={htmlPreview} />
+          <div>
+            <HTMLPreview containerTitle="Preview" htmlPreview={htmlPreview} />
           </div>
         </div>
         <Modal
