@@ -110,13 +110,7 @@ export const Container: FC = () => {
   };
 
   const restartGame = () => {
-    setCurrentLevel(0);
-    setCards(levels[0].cards);
-    setHP(100);
-    setIsOrderIncorrect(false);
-    setIsModalOpen(false);
-    setHasWon(false);
-    setHtmlPreview("");
+    window.location.reload();
   };
 
   const currentLevelData: Level = levels[currentLevel];
