@@ -8,6 +8,8 @@ import HTMLPreview from "./HtmlPreview";
 import CodePanel from "./CodePanel";
 import Header from "./Header";
 import buildHtmlString from "../utils/buildHtmlString";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export interface Item {
   id: number;
@@ -90,7 +92,15 @@ export const Container: FC = () => {
       if (hp - 10 <= 0) {
         setIsModalOpen(true);
       }
-      alert(`Incorrect lines: ${incorrectLines}`);
+      toast.error(
+        <div className="text-black text-center">
+          <span className="ml-auto mt-1 text-base text-red-500 font-bold uppercase logo_font">
+            -10HP
+          </span>
+          <br />
+          <h3>Linhas Incorretas: {incorrectLines.join(", ")}</h3>
+        </div>
+      );
     }
   };
 
