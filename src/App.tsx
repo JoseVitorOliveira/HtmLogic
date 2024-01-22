@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "./components/Container";
 import Tutorial from "./components/Tutorial";
 import { ToastContainer } from "react-toastify";
 
 function App() {
+  const [showTutorial, setShowTutorial] = useState(false);
+
+  useEffect(() => {
+    const tutorialShownBefore = localStorage.getItem("tutorialShown");
+    if (!tutorialShownBefore) {
+      setShowTutorial(true);
+      localStorage.setItem("tutorialShown", "true");
+    }
+  }, []);
+
   return (
     <main>
-      {/* <Tutorial /> */}
+      {showTutorial && <Tutorial onClose={() => setShowTutorial(false)} />}
       <Container />
       <ToastContainer
         position="top-center"
