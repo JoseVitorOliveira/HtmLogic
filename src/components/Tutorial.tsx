@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
-const Tutorial = () => {
+interface TutorialProps {
+  onClose: () => void;
+}
+
+const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
   const [dialogOpen, setDialogOpen] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -16,6 +20,7 @@ const Tutorial = () => {
 
   const closeDialog = () => {
     setDialogOpen(false);
+    onClose();
   };
 
   const onRequestClose = () => {
@@ -45,8 +50,6 @@ const Tutorial = () => {
       >
         <span className="text-2xl">×</span>
       </button>
-
-      {/* <h2>Step {currentStep}</h2> */}
 
       {currentStep === 1 && (
         <div>

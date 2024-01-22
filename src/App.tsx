@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <main>
-      <Tutorial />
+      {/* <Tutorial /> */}
       <Container />
       <ToastContainer
         position="top-center"

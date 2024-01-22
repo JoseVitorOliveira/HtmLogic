@@ -1,11 +1,23 @@
-import React from "react";
+// Header.tsx
+import React, { useState } from "react";
+import Tutorial from "./Tutorial"; // Import the Tutorial component
 
 interface HeaderProps {
   level: string;
   hp: number;
 }
 
-const Header = ({ level, hp }: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({ level, hp }) => {
+  const [isTutorialOpen, setIsTutorialOpen] = useState(false);
+
+  const openTutorial = () => {
+    setIsTutorialOpen(true);
+  };
+
+  const closeTutorial = () => {
+    setIsTutorialOpen(false);
+  };
+
   return (
     <header className="px-[200px] select-none flex justify-between items-center h-[60px] shadow-2xl bg-slate-800">
       <a href="/">
@@ -23,6 +35,17 @@ const Header = ({ level, hp }: HeaderProps) => {
           {hp}hp
         </h1>
       </div>
+      <div className="shadow-md shadow-gray-600 rounded-full flex justify-center items-center">
+        <button
+          title="Ajuda"
+          className="text-3xl font-bold logo_font rounded-full mt-1 text-white uppercase w-[45px] h-[45px]"
+          onClick={openTutorial}
+        >
+          ?
+        </button>
+      </div>
+
+      {isTutorialOpen && <Tutorial onClose={closeTutorial} />}
     </header>
   );
 };
