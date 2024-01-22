@@ -1,12 +1,12 @@
 import React from "react";
 import { Container } from "./components/Container";
-import GameInstructions from "./components/GameInstructions";
+import Tutorial from "./components/Tutorial";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <main>
-      {/* <GameInstructions /> */}
+      <Tutorial />
       <Container />
       <ToastContainer
         position="top-center"
