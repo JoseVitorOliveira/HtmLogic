@@ -51,9 +51,9 @@ export const Container: FC = () => {
     (card: { id: number; text: string }, index: number) => {
       return (
         <Card
-          key={card.id.toString()}
+          key={card.id}
           index={index}
-          id={card.id.toString()}
+          id={card.id}
           text={card.text}
           moveCard={moveCard}
         />

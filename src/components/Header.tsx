@@ -35,10 +35,10 @@ const Header: React.FC<HeaderProps> = ({ level, hp }) => {
           {hp}hp
         </h1>
       </div>
-      <div className="shadow-md shadow-gray-600 rounded-full flex justify-center items-center">
+      <div className="border bg-gray-700 border-gray-900 rounded-full flex justify-center items-center">
         <button
           title="Ajuda"
-          className="text-3xl font-bold logo_font rounded-full mt-1 text-white uppercase w-[45px] h-[45px]"
+          className="text-3xl hover:text-black hover:bg-white font-bold logo_font rounded-full text-white uppercase w-[55px] h-[45px]"
           onClick={openTutorial}
         >
           ?

@@ -108,7 +108,7 @@ export const Card: FC<CardProps> = ({ id, text, index, moveCard }) => {
   drag(drop(ref));
   return (
     <div
-      className=""
+      className="w-full"
       ref={ref}
       style={{ ...style, opacity }}
       data-handler-id={handlerId}

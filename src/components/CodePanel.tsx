@@ -25,18 +25,21 @@ const CardsContainer: FC<CardsContainerProps> = ({
           Reorganize as linhas de código HTML
         </h1>
       </div>
-      <div className="flex justify-between h-[330px] w-[500px] rounded-sm shadow-sm">
+      <div className="flex justify-between h-[330px] w-[500px] bg-[#403b3b] rounded-sm shadow-sm">
         <div className="bg-[#2D2D2D] text-white w-[35px] rounded-sm select-none">
           {linesOfCode.map((line) => (
             <div
-              className="flex justify-center lines_font py-[0.2rem] text-[#cecece] h-[30px]"
+              className="flex justify-center w-full lines_font py-[0.2rem] text-[#cecece] h-[30px]"
               key={line.toString()}
             >
               {line}
             </div>
           ))}
         </div>
-        <div className="flex-1 bg-[#403b3b]">
+        <div
+          className="flex-1 bg-[#403b3b] border border-gray-700"
+          style={{ height: `${30 * cards.length}px` }}
+        >
           <div>{cards.map((card, i) => renderCard(card, i))}</div>
         </div>
       </div>

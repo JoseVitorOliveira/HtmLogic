@@ -78,15 +78,28 @@ html {
 
 /* it works */
 
-/* .button_preview button {
+.styles_preview button {
   background-color: #1d232a;
   border: 1px solid #1d232a;
+  margin-top: 15px;
   border-radius: 5px;
   color: #fff;
-  padding: 10px 20px;
+  padding: 5px 10px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
- */
+
+.styles_preview button:hover {
+  background-color: #343536;
+}
+
+.styles_preview a {
+  color: #4958f5;
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}

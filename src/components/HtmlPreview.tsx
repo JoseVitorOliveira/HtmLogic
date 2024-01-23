@@ -11,8 +11,11 @@ const HTMLPreview = ({ htmlPreview, containerTitle }: HTMLPreviewProps) => {
           {containerTitle}
         </h1>
       </div>
-      <div className="bg-[#D9D9D9] border border-white rounded-sm h-[250px] w-[250px] flex justify-center shadow- items-center">
-        <div dangerouslySetInnerHTML={{ __html: htmlPreview }}></div>
+      <div className="bg-[#D9D9D9] border border-white rounded-sm h-[250px] w-[250px] flex justify-center items-center">
+        <div
+          className="styles_preview flex flex-col justify-center items-center w-full h-full"
+          dangerouslySetInnerHTML={{ __html: htmlPreview }}
+        ></div>
       </div>
     </div>
   );
