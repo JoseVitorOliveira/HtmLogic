@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ level, hp }) => {
   };
 
   return (
-    <header className="px-[200px] select-none flex justify-between items-center h-[60px] shadow-2xl bg-slate-800">
+    <header className="md:px-[200px] px-[100px] select-none flex justify-between items-center h-[60px] shadow-2xl bg-slate-800">
       <a href="/">
         <h1 className="grandient_logo logo_font text-3xl uppercase mt-1">
           HtmLogic
@@ -35,10 +35,10 @@ const Header: React.FC<HeaderProps> = ({ level, hp }) => {
           {hp}hp
         </h1>
       </div>
-      <div className="border bg-gray-700 border-gray-900 rounded-full flex justify-center items-center">
+      <div className="bg-blue-950 border shadow-sm shadow-white border-gray-500 rounded-full flex justify-center items-center">
         <button
           title="Ajuda"
-          className="text-3xl hover:text-black hover:bg-white font-bold logo_font rounded-full text-white uppercase w-[55px] h-[45px]"
+          className="text-3xl hover:text-blue-900 hover:bg-gray-200 font-bold logo_font rounded-full text-white uppercase w-[55px] h-[45px]"
           onClick={openTutorial}
         >
           ?

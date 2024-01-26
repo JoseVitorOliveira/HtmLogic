@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* fonts */
 /* Roboto */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&family=Overpass:wght@400;700&family=Roboto:wght@100;300;400;700&family=Ubuntu:wght@400;500;700&display=swap");
 /* Press Start 2P */
@@ -9,12 +10,7 @@
 /* Patrick Hand */
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Patrick+Hand&display=swap");
 
-:root {
-  --main-font: "Roboto", sans-serif;
-  --font-logo: "Press Start 2P", cursive;
-  --font-title: "Patrick Hand", cursive;
-}
-
+/* generic configs */
 * {
   margin: 0;
   padding: 0;
@@ -27,18 +23,21 @@ html {
   background-color: #1d232a;
 }
 
+/* logo grandient */
 @layer utilities {
   .grandient_logo {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500;
   }
 }
 
+/* next button position */
 .position_absolute {
   position: absolute;
   top: 87%;
   left: 83%;
 }
 
+/* fonts */
 .logo_font {
   font-family: "Press Start 2P", cursive;
 }
@@ -56,9 +55,6 @@ html {
 }
 
 /* tutorial animation */
-
-/* Tutorial.css */
-
 .modal-animation {
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -75,9 +71,6 @@ html {
 }
 
 /* inside the containers */
-
-/* it works */
-
 .styles_preview button {
   background-color: #1d232a;
   border: 1px solid #1d232a;
@@ -93,6 +86,28 @@ html {
 
 .styles_preview button:hover {
   background-color: #343536;
+}
+
+.styles_preview hr {
+  background-color: #343536;
+  color: black;
+}
+
+.styles_preview h1 {
+  font-size: 20px;
+}
+
+.styles_preview ul {
+  list-style: outside;
+}
+
+.styles_preview th,
+tr,
+td,
+table {
+  border: 1px solid #343536;
+  padding: 2px;
+  text-align: center;
 }
 
 .styles_preview a {

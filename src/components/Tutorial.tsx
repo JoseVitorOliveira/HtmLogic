@@ -51,6 +51,10 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
         <span className="text-2xl">×</span>
       </button>
 
+      <h2 className="title_font text-xl text-pink-500 absolute">
+        {currentStep}/4
+      </h2>
+
       {currentStep === 1 && (
         <div>
           <h1 className="grandient_logo text-2xl my-7 logo_font uppercase text-center">
@@ -78,6 +82,10 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
             livremente uma linha para uma nova posição. Isso permitirá que você
             reorganize o código da maneira que achar melhor.
           </p>
+          <p className="mx-6 text-justify mt-4 font-mono text-lg text-gray-100">
+            Quando achar que o código está organizado corretamente, clique no
+            botão "Próximo" no canto inferior da tela.
+          </p>
         </div>
       )}
       {currentStep === 3 && (
@@ -86,28 +94,33 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
             Objetivo e Preview
           </h1>
           <p className="mx-6 text-justify font-mono text-lg text-gray-100">
-            O Objetivo fornece uma visão antecipada do código HTML que você deve
-            criar. Este é o ponto de chegada, a meta que você deseja atingir.
+            O Objetivo fornece uma meta do resultado do código HTML que você
+            deve criar. A Preview oferece uma visão atualizada do estado do
+            código que você está organizando. Use a Preview como um guia visual,
+            comparando-a com o Objetivo para garantir que você esteja no caminho
+            certo.
           </p>
-          <p className="mx-6 text-justify mt-4 font-mono text-lg text-gray-100">
-            A Preview oferece uma visão atualizada do estado do seu código.
-            Mostrando a compilação do código à medida que você o organiza. Use a
-            Preview como um guia visual, comparando-a com o Objetivo para
-            garantir que você esteja no caminho certo.
+
+          <p className="mx-6 text-justify mt-2 font-mono text-lg text-red-400">
+            Mas cuidado, nem sempre uma Preview igual ao objetivo indica que o
+            código está correto.
           </p>
         </div>
       )}
       {currentStep === 4 && (
         <div>
           <h1 className="grandient_logo text-2xl my-7 logo_font uppercase">
-            Barra de Vida
+            Pontos de Vida
           </h1>
           <p className="mx-6 text-justify font-mono text-lg text-gray-100">
-            Cada nível concluído com sucesso acrescenta pontos de vida (
-            <span className="text-green-400">+10HP</span>) à sua pontuação
-            total. No entanto, tome cuidado! Se a ordem estiver incorreta,
-            perderá pontos de vida (<span className="text-red-400">-10HP</span>
-            ). Se sua pontuação chegar a 0HP, o jogo terminará.
+            Cada nível concluído com sucesso acrescenta
+            <span className="text-green-400 text-sm logo_font"> +10HP</span> ao
+            seus pontos de vida. No entanto, tome cuidado! Se a ordem estiver
+            incorreta, perderá
+            <span className="text-red-400 text-sm logo_font"> -10HP</span>. Se
+            sua pontuação chegar a{" "}
+            <span className="text-red-800 text-sm logo_font"> 0HP</span>, o jogo
+            terminará.
           </p>
           <p className="mx-6 text-justify mt-4 font-mono text-lg text-gray-100">
             Fique tranquilo, pois a cada erro, o jogo fornecerá informações

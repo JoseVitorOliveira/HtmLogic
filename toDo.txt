@@ -5,6 +5,8 @@
 [x] Novo layout com o DnD no centro.
 [ ] Estilo dentro dos containers.
 [ ] Estilo do modal.
+    Mencionar o botão próximo
+    Mudar ordem tutorial
 
 🟧!!
 

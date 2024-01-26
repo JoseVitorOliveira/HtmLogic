@@ -35,6 +35,7 @@ const ModalComponent = ({
           right: "auto",
           bottom: "auto",
           marginRight: "-50%",
+          border: "none",
           transform: "translate(-50%, -50%)",
           backgroundColor: "#1e293b",
           color: "#fff",
@@ -57,7 +58,7 @@ const ModalComponent = ({
           </p>
           <div className="flex justify-end mt-[9px]">
             <button
-              className="border border-black bg-[#ffffff] rounded p-1 title text-base text-black"
+              className="bg-[#ffffff] rounded p-1 title text-base text-black"
               onClick={restartGame}
             >
               Reiniciar

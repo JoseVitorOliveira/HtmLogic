@@ -10,6 +10,7 @@ import Header from "./Header";
 import buildHtmlString from "../utils/buildHtmlString";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Code from "./SyntaxHighlighter";
 
 export interface Item {
   id: number;
@@ -98,7 +99,9 @@ export const Container: FC = () => {
             -10HP
           </span>
           <br />
-          <h3>Linhas Incorretas: {incorrectLines.join(", ")}</h3>
+          <h3 className="text-sm">
+            Linhas Incorretas: {incorrectLines.join(", ")}
+          </h3>
         </div>
       );
     }
@@ -131,17 +134,19 @@ export const Container: FC = () => {
       <Header level={level} hp={hp} />
       <div className="mx-[200px]">
         <div className="w-full mt-6 flex justify-center">
-          <span className="title_font text-[#BB62E5] text-5xl mb-5">
+          <span className="title_font text-[#BB62E5] text-6xl mb-2">
             {title}
           </span>
         </div>
-        <div className="w-full flex m-5 items-center justify-center">
-          <div className="max-w-4xl p-6 bg-gray-700 rounded-lg shadow-md text-white text-center">
-            <p className="text-gray-300 text-justify">{instructions}</p>
+        <div className="w-[900px] h-[140px] mx-auto flex mt-5 items-center justify-center">
+          <div className="w-full h-full rounded-lg p-2 text-center">
+            <p className="text-white text-base text-justify">
+              {Code({ code: instructions })}
+            </p>
           </div>
         </div>
 
-        <div className="flex justify-around mt-8 p-6">
+        <div className="flex w-full justify-around mt-2 p-6">
           {/* objetivo */}
           <div>
             <HTMLPreview

@@ -16,7 +16,7 @@ const CardsContainer: FC<CardsContainerProps> = ({
   moveCard,
   renderCard,
 }) => {
-  const linesOfCode = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  const linesOfCode = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <div>
@@ -25,7 +25,7 @@ const CardsContainer: FC<CardsContainerProps> = ({
           Reorganize as linhas de código HTML
         </h1>
       </div>
-      <div className="flex justify-between h-[330px] w-[500px] bg-[#403b3b] rounded-sm shadow-sm">
+      <div className="flex justify-between h-[360px] w-[500px] bg-[#403b3b] rounded-sm shadow-sm">
         <div className="bg-[#2D2D2D] text-white w-[35px] rounded-sm select-none">
           {linesOfCode.map((line) => (
             <div
