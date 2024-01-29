@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.2.14",
     "@types/react-modal": "^3.16.2",
     "immutability-helper": "^3.1.1",
+    "latest-version": "^8.0.0",
     "lodash.debounce": "^4.0.8",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
