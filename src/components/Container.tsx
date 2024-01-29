@@ -138,7 +138,7 @@ export const Container: FC = () => {
             {title}
           </span>
         </div>
-        <div className="w-[900px] h-[140px] mx-auto flex mt-5 items-center justify-center">
+        <div className="w-[900px] h-[140px] mx-auto flex mt-2 items-center justify-center">
           <div className="w-full h-full rounded-lg p-2 text-center">
             <p className="text-white text-base text-justify">
               {Code({ code: instructions })}

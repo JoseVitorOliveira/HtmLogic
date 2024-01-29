@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ level, hp }) => {
         </h1>
       </a>
       <div className="flex items-center justify-center">
-        <h2 className="uppercase logo_font text-zinc-200 text-1xl p-2 rounded-md">
+        <h2 className="uppercase logo_font text-zinc-200 text-1xl ml-10 p-2 rounded-md">
           Level {level}
         </h2>
       </div>
