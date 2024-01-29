@@ -102,7 +102,7 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
           </p>
 
           <p className="mx-6 text-justify mt-2 font-mono text-lg text-red-400">
-            Mas cuidado, nem sempre uma Preview igual ao objetivo indica que o
+            Mas cuidado, nem sempre uma preview igual ao objetivo indica que o
             código está correto.
           </p>
         </div>
