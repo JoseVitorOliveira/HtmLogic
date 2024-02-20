@@ -1,6 +1,5 @@
-// Header.tsx
 import React, { useState } from "react";
-import Tutorial from "./Tutorial"; // Import the Tutorial component
+import Tutorial from "./Tutorial";
 
 interface HeaderProps {
   level: string;

@@ -1,4 +1,3 @@
-// Container.tsx
 import React, { FC, useCallback, useEffect, useState } from "react";
 import update from "immutability-helper";
 import { Card } from "./Card";
