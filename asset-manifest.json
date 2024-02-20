@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/HtmLogic/static/css/main.248d2dd3.css",
+    "main.js": "/HtmLogic/static/js/main.a39168dd.js",
+    "index.html": "/HtmLogic/index.html",
+    "main.248d2dd3.css.map": "/HtmLogic/static/css/main.248d2dd3.css.map",
+    "main.a39168dd.js.map": "/HtmLogic/static/js/main.a39168dd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.248d2dd3.css",
+    "static/js/main.a39168dd.js"
+  ]
+}
