@@ -149,7 +149,7 @@ export const Container: FC = () => {
           {/* objetivo */}
           <div>
             <HTMLPreview
-              containerTitle="Objetivo"
+              containerTitle="A estrutura que você deve criar"
               htmlPreview={buildHtmlString(correctOrder)}
             />
           </div>
@@ -169,7 +169,10 @@ export const Container: FC = () => {
             </button>
           </div>
           <div>
-            <HTMLPreview containerTitle="Preview" htmlPreview={htmlPreview} />
+            <HTMLPreview
+              containerTitle="Compilação do código atual"
+              htmlPreview={htmlPreview}
+            />
           </div>
         </div>
         <Modal

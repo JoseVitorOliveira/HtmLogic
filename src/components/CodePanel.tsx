@@ -21,7 +21,7 @@ const CardsContainer: FC<CardsContainerProps> = ({
   return (
     <div>
       <div className="bg-gray-700 rounded">
-        <h1 className="text-center title_font text-2xl mb-4 text-gray-100">
+        <h1 className="text-center title_font text-2xl mb-4 text-gray-200 shadow-sm shadow-white">
           Reorganize as linhas de código HTML
         </h1>
       </div>

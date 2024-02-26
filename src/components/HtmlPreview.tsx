@@ -7,7 +7,7 @@ const HTMLPreview = ({ htmlPreview, containerTitle }: HTMLPreviewProps) => {
   return (
     <div className="bg-gray-700 w-full h-[32px] rounded">
       <div>
-        <h1 className="text-center title_font text-2xl text-gray-100 mb-4">
+        <h1 className="text-center title_font text-xl shadow-sm shadow-white w-full text-gray-100 mb-4">
           {containerTitle}
         </h1>
       </div>

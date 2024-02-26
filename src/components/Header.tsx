@@ -37,10 +37,10 @@ const Header: React.FC<HeaderProps> = ({ level, hp }) => {
       <div className="bg-blue-950 border shadow-sm shadow-white border-gray-500 rounded-full flex justify-center items-center">
         <button
           title="Ajuda"
-          className="text-3xl hover:text-blue-900 hover:bg-gray-200 font-bold logo_font rounded-full text-white uppercase w-[55px] h-[45px]"
+          className="text-xl hover:text-blue-900 hover:bg-gray-200 font-bold logo_font rounded-full text-white uppercase w-[130px] h-[45px]"
           onClick={openTutorial}
         >
-          ?
+          Ajuda
         </button>
       </div>
 

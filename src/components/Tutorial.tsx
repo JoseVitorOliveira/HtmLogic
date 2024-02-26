@@ -52,7 +52,7 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
       </button>
 
       <h2 className="title_font text-xl text-pink-500 absolute">
-        {currentStep}/4
+        {currentStep}/{totalSteps}
       </h2>
 
       {currentStep === 1 && (
@@ -88,26 +88,8 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
           </p>
         </div>
       )}
-      {currentStep === 3 && (
-        <div>
-          <h1 className="grandient_logo text-2xl my-7 logo_font uppercase">
-            Objetivo e Preview
-          </h1>
-          <p className="mx-6 text-justify font-mono text-lg text-gray-100">
-            O Objetivo fornece uma meta do resultado do código HTML que você
-            deve criar. A Preview oferece uma visão atualizada do estado do
-            código que você está organizando. Use a Preview como um guia visual,
-            comparando-a com o Objetivo para garantir que você esteja no caminho
-            certo.
-          </p>
 
-          <p className="mx-6 text-justify mt-2 font-mono text-lg text-red-400">
-            Mas cuidado, nem sempre uma preview igual ao objetivo indica que o
-            código está correto.
-          </p>
-        </div>
-      )}
-      {currentStep === 4 && (
+      {currentStep === 3 && (
         <div>
           <h1 className="grandient_logo text-2xl my-7 logo_font uppercase">
             Pontos de Vida
@@ -125,6 +107,25 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
           <p className="mx-6 text-justify mt-4 font-mono text-lg text-gray-100">
             Fique tranquilo, pois a cada erro, o jogo fornecerá informações
             sobre quais linhas precisam de correção.
+          </p>
+        </div>
+      )}
+      {currentStep === 4 && (
+        <div>
+          <h1 className="grandient_logo text-2xl my-7 logo_font uppercase">
+            Tutorial em Vídeo
+          </h1>
+          <p className="mx-6 text-justify font-mono text-lg text-gray-100">
+            Ainda não entendeu? Acompanhe uma breve explicação sobre como jogar
+            HtmLogic. Assista ao tutorial clicando{" "}
+            <a
+              className="text-purple-400 underline decoration-dotted"
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              aqui
+            </a>
           </p>
         </div>
       )}
