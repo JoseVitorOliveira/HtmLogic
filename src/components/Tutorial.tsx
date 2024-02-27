@@ -120,7 +120,7 @@ const Tutorial: React.FC<TutorialProps> = ({ onClose }) => {
             HtmLogic. Assista ao tutorial clicando{" "}
             <a
               className="text-purple-400 underline decoration-dotted"
-              href="https://www.youtube.com/"
+              href="https://youtu.be/5CWcc7u7Vew"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -170,7 +170,7 @@ export const Container: FC = () => {
           </div>
           <div>
             <HTMLPreview
-              containerTitle="Compilação do código atual"
+              containerTitle="Exibição do código atual"
               htmlPreview={htmlPreview}
             />
           </div>
